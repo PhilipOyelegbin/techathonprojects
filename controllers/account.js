@@ -71,12 +71,12 @@ const updateAccount = (req, res) => {
     if(!parsedAccount) {
       return res.status(400).json({message: "No account found"})
     }
-    // find the account you want to edit by email
+    // find the account you want to edit by id
     const findAccount = parsedAccount.find(account => account.id === id)
     if(!findAccount) {
       return res.status(404).json({error: `Account with the id: ${id} not found`})
     }
-    // get the other account in the database by email and push the new data into it
+    // get the other account in the database by id and push the new data into it
     const filteredAccount = parsedAccount.filter(account => account.id !== id)
     req.body.first_name !== undefined ? findAccount.first_name = req.body.first_name : findAccount.first_name = findAccount.first_name
     req.body.last_name !== undefined ? findAccount.last_name = req.body.last_name : findAccount.last_name = findAccount.last_name

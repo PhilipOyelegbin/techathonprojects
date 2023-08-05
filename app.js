@@ -1,12 +1,12 @@
 const express = require("express");
 const bodyParser = require("body-parser")
-const accountRoutes = require("./routers");
+const {accountRoutes, notesRoutes} = require("./routers");
 
 const app = express()
 
 app.use(bodyParser.json());
 app.use("/user", accountRoutes)
-// app.use("/note", notesRoutes)
+app.use("/note", notesRoutes)
 
 app.get("/", (req, res) => {
   res.status(200).send("Note API created using express by Philip Oyelegbin")
