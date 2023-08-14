@@ -1,7 +1,5 @@
-const fs = require("fs")
-const cuid = require("cuid")
 
-exports.createNote = (req, res) => {
+export const createLedger = (req, res) => {
   const {title, content} = req.body
   const note = {
     id: cuid(),
@@ -28,7 +26,7 @@ exports.createNote = (req, res) => {
   })
 }
 
-exports.getNotes = (req, res) => {
+export const getLedger = (req, res) => {
   fs.readFile("./database/notes.json", "utf8", (err, value) => {
     if(err) {
       return res.status(500).json({message: "Internal server error"})
@@ -37,7 +35,7 @@ exports.getNotes = (req, res) => {
   })
 }
 
-exports.getNoteById = (req, res, id) => {
+export const getLedgerById = (req, res, id) => {
   id = req.params.id
   if(!id) {
     return res.status(400).json({error: "The id is required"})
@@ -55,7 +53,7 @@ exports.getNoteById = (req, res, id) => {
   })
 }
 
-exports.updateNote = (req, res) => {
+export const updateLedger = (req, res) => {
   const {id} = req.body
   if(!id) {
     return res.status(400).json({message: "Please provide note id"})
@@ -88,7 +86,7 @@ exports.updateNote = (req, res) => {
   })
 }
 
-exports.deleteNoteById = (req, res, id) => {
+export const deleteLedgerById = (req, res, id) => {
   id = req.params.id
   if(!id) {
     return res.status(400).json({error: "The id is required"})
