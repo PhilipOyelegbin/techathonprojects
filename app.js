@@ -17,10 +17,10 @@ app.get("/", (req, res) => {
       <h3>Note API created using express by Philip K. Oyelegbin</h3>
       <ul>
         <li>Root: <a href="http://localhost:3001">http://localhost:3001</a></li>
-        <li>Get, post and update account: <a href="http://localhost:3001/account">http://localhost:3001/account</a></li>
-        <li>Get and delete account by the id: <a href="http://localhost:3001/account/:id">http://localhost:3001/account/:id</a></li>
-        <li>Get, post and update note: <a href="http://localhost:3001/note">http://localhost:3001/note</a></li>
-        <li>Get and delete note by the id: <a href="http://localhost:3001/note/:id">http://localhost:3001/note/:id</a></li>
+        <li>Get and post account: <a href="http://localhost:3001/account">http://localhost:3001/account</a></li>
+        <li>Get, update and delete account by the id: <a href="http://localhost:3001/account/:id">http://localhost:3001/account/:id</a></li>
+        <li>Get and post note: <a href="http://localhost:3001/ledger">http://localhost:3001/ledger</a></li>
+        <li>Get, update and delete note by the id: <a href="http://localhost:3001/ledger/:id">http://localhost:3001/ledger/:id</a></li>
       </ul>
     </div>`
   )
