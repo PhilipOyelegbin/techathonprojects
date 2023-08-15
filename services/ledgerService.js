@@ -1,48 +1,43 @@
 import { ledgerModel } from "../model/ledgerModel.js";
-import { generateLedgerNum } from "../utilities/ledgerNumGenerator.js";
 
 // create a new ledger service
-export const createLedgerService = async(data) => {
+export const createLedgerService = async(amount, account_id) => {
+  const interestRate = 0.05;
   const newLedger = new ledgerModel({
-    first_name: data.first_name,
-    last_name: data.last_name,
-    email: data.email,
-    address: data.address,
-    phone_number: data.phone_number,
-    ledger_number: generateLedgerNum(),
-    password: data.password
+    amount,
+    interest: amount * interestRate,
+    account_id,
+    total: amount + (amount * interestRate)
   })
-  newLedger.save()
+  await newLedger.save()
   return newLedger
 }
 
 // get all ledger service
 export const getLedgerService = async() => {
-  const allLedger = ledgerModel.find()
+  const allLedger = await ledgerModel.find()
   return allLedger
 }
 
 // get ledger service by id
 export const getLedgerByIdService = async(id) => {
-  const oneLedger = ledgerModel.findById(id)
+  const oneLedger = await ledgerModel.findById(id)
   return oneLedger
 }
 
 // update ledger service by id
-export const updateLedgerByIdService = async(id, data) => {
-  const updateLedger = ledgerModel.findByIdAndUpdate(id, {
-    first_name: data.first_name,
-    last_name: data.last_name,
-    email: data.email,
-    address: data.address,
-    phone_number: data.phone_number,
-    password: data.password
+export const updateLedgerByIdService = async(id, amount) => {
+  const updateLedger = await ledgerModel.findByIdAndUpdate(id, {
+    amount,
+    interest: amount * 0.05,
+    total: amount + (amount * 0.05)
   }, {new: true})
+  await updateLedger.save()
   return updateLedger
 }
 
 // delete ledger service by id
 export const deleteLedgerByIdService = async(id) => {
-  const deleteLedger = ledgerModel.findByIdAndDelete(id)
+  const deleteLedger = await ledgerModel.findByIdAndDelete(id)
   return deleteLedger
 }

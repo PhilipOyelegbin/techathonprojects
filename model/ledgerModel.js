@@ -1,7 +1,7 @@
-import {Schema, Model} from "mongoose";
+import {Schema, model} from "mongoose";
 
 const ledgerSchema = Schema({
-  account_number: {
+  amount: {
     type: Number,
     required: true
   },
@@ -18,7 +18,11 @@ const ledgerSchema = Schema({
     type: Schema.Types.ObjectId,
     ref: "accounts",
     required: true
+  },
+  total: {
+    type: Number,
+    required: true
   }
 }, {timestamps: true})
 
-export const ledgerModel = Model("ledgers", ledgerSchema)
+export const ledgerModel = model("ledgers", ledgerSchema)

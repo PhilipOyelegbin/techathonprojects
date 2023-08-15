@@ -4,8 +4,11 @@ import { createLedger, deleteLedgerById, getLedger, getLedgerById, updateLedger 
 
 export const ledgerRoutes = Router("/ledger")
 
-ledgerRoutes.get("/", getLedger)
-ledgerRoutes.get("/:id", getLedgerById)
-ledgerRoutes.post("/", createLedger)
-ledgerRoutes.put("/", updateLedger)
-ledgerRoutes.delete("/:id", deleteLedgerById)
+ledgerRoutes.route("/").get(getLedger).post(createLedger)
+ledgerRoutes.route("/:id").get(getLedgerById).patch(updateLedger).delete(deleteLedgerById)
+
+// ledgerRoutes.get("/", getLedger)
+// ledgerRoutes.get("/:id", getLedgerById)
+// ledgerRoutes.post("/", createLedger)
+// ledgerRoutes.put("/:id", updateLedger)
+// ledgerRoutes.delete("/:id", deleteLedgerById)

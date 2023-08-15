@@ -10,12 +10,12 @@ export const createAccount = async(req, res) => {
   try {
     const {first_name, last_name, email, address, phone_number, password} = req.body;
     if(!first_name || !last_name || !email || !address || !phone_number || !password) {
-      res.status(400).json({message: "Please provide all fields"})
+      return res.status(400).json({message: "Please provide all fields"})
     }
     const newAccount = await createAccountService(req.body)
-    res.status(200).json({message: "Account created successfully", newAccount})
+    return res.status(200).json({message: "Account created successfully", newAccount})
   } catch (error) {
-    res.status(500).json({error: "Internal server error"})
+    return res.status(500).json({error: "Internal server error"})
   }
 }
 
@@ -32,11 +32,11 @@ export const getAccountById = async(req, res) => {
   try {
     const {id} = req.params
     if(!id) {
-      res.status(400).json({message: "Please provide the account id"})
+      return res.status(400).json({message: "Please provide the account id"})
     }
     const foundAccount = await getAccountByIdService(id)
     if(!foundAccount) {
-      res.status(404).json({error: "Account not found"})
+      return res.status(404).json({error: "Account not found"})
     }
     res.status(200).json({message: "Account received", foundAccount})
   } catch (error) {
@@ -48,11 +48,11 @@ export const updateAccount = async(req, res) => {
   try {
     const {id} = req.params;
     if(!id) {
-      res.status(400).json({message: "Please provide the account id"})
+      return res.status(400).json({message: "Please provide the account id"})
     }
     const foundAccount = await getAccountByIdService(id)
     if(!foundAccount) {
-      res.status(404).json({error: "Account not found"})
+      return res.status(404).json({error: "Account not found"})
     }
     const newAccount = await updateAccountByIdService(id, req.body)
     res.status(200).json({message: "Account updated successfully", newAccount})
@@ -65,11 +65,11 @@ export const deleteAccountById = async(req, res) => {
   try {
     const {id} = req.params;
     if(!id) {
-      res.status(400).json({message: "Please provide the account id"})
+      return res.status(400).json({message: "Please provide the account id"})
     }
     const foundAccount = await getAccountByIdService(id)
     if(!foundAccount) {
-      res.status(404).json({error: "Account not found"})
+      return res.status(404).json({error: "Account not found"})
     }
     const eraseAccount = await deleteAccountByIdService(id)
     res.status(200).json({message: "Account deleted successfully", eraseAccount})
