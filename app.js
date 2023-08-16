@@ -14,13 +14,13 @@ app.use("/ledger", ledgerRoutes)
 app.get("/", (req, res) => {
   res.status(200).send(
     `<div>
-      <h3>Note API created using express by Philip K. Oyelegbin</h3>
+      <h3>Loan Money API created using express by Philip K. Oyelegbin</h3>
       <ul>
         <li>Root: <a href="http://localhost:3001">http://localhost:3001</a></li>
         <li>Get and post account: <a href="http://localhost:3001/account">http://localhost:3001/account</a></li>
-        <li>Get, update and delete account by the id: <a href="http://localhost:3001/account/:id">http://localhost:3001/account/:id</a></li>
-        <li>Get and post note: <a href="http://localhost:3001/ledger">http://localhost:3001/ledger</a></li>
-        <li>Get, update and delete note by the id: <a href="http://localhost:3001/ledger/:id">http://localhost:3001/ledger/:id</a></li>
+        <li>Get, update and delete account by id: <a href="http://localhost:3001/account/:id">http://localhost:3001/account/:id</a></li>
+        <li>Get and post ledger: <a href="http://localhost:3001/ledger">http://localhost:3001/ledger</a></li>
+        <li>Get, update and delete ledger by id: <a href="http://localhost:3001/ledger/:id">http://localhost:3001/ledger/:id</a></li>
       </ul>
     </div>`
   )
